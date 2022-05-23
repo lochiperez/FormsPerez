@@ -1,44 +1,46 @@
 <div class="container d-flex justify-content-center p-4">
-    <div class="card bg-black rounded-4 text-light shadow" style="width: 28rem;">
+    <div class="card bg-black rounded-3 p-2 text-light shadow">
         <div class="card-body">
-            <h3 class="card-title text-white text-center fst-italic fw-bolder">Formulario de Registro</h3>
-            <span>EL RESULTADO SE MUESTRA POR CONSOLA</span>
-            <form [formGroup]="registrationForm" (ngSubmit)="register()">
+            <h3 class="card-title text-white text-center">Formulario de Registro</h3>
+            <span class="card-title text-white">EL RESULTADO SE MUESTRA POR
+                CONSOLA</span>
+            <form [formGroup]="formularioRegistro" (ngSubmit)="register()">
                 <div class="mb-2">
                     <label for="name" class="form-label">Nombre</label>
-                    <input type="text" class="form-control border-secondary" formControlName="name" id="name">
+                    <input type="text" class="form-control border-secondary" formControlName="nombre" id="name">
                     <span class="text-danger"
-                        *ngIf="registrationForm.get('name')?.touched && registrationForm.get('name')?.errors?.['required']">
+                        *ngIf="formularioRegistro.get('nombre')?.touched && formularioRegistro.get('nombre')?.errors?.['required']">
                         Es necesario que ingrese su nombre
                     </span>
                     <span class="text-danger"
-                        *ngIf="registrationForm.get('name')?.touched && registrationForm.get('name')?.errors?.['minlength']">
+                        *ngIf="formularioRegistro.get('nombre')?.touched && formularioRegistro.get('nombre')?.errors?.['minlength']">
                         Debe tener por lo menos 3 letras
                     </span>
-                    <span class="text-danger" *ngIf="registrationForm.get('name')?.errors?.['maxlength']">
+                    <span class="text-danger" *ngIf="formularioRegistro.get('nombre')?.errors?.['maxlength']">
                         El campo de nombre tiene un limite máximo de 20 letras
                     </span>
                 </div>
                 <div class="mb-2">
                     <label for="lastname" class="form-label">Apellido</label>
-                    <input type="text" class="form-control border-secondary" formControlName="lastname" id="lastname">
+                    <input type="text" class="form-control border-secondary" formControlName="apellido" id="lastname">
                     <span class="text-danger"
-                        *ngIf="registrationForm.get('lastname')?.touched && registrationForm.get('lastname')?.errors?.['required']">
+                        *ngIf="formularioRegistro.get('apellido')?.touched && formularioRegistro.get('apellido')?.errors?.['required']">
                         Es necesario que ingrese su apellido.
                     </span>
                     <span class="text-danger"
-                        *ngIf="registrationForm.get('lastname')?.touched && registrationForm.get('lastname')?.errors?.['minlength']">
+                        *ngIf="formularioRegistro.get('apellido')?.touched && formularioRegistro.get('apellido')?.errors?.['minlength']">
                         Debe tener por lo menos 3 letras.
                     </span>
-                    <span class="text-danger" *ngIf="registrationForm.get('lastname')?.errors?.['maxlength']">
+                    <span class="text-danger" *ngIf="formularioRegistro.get('apellido')?.errors?.['maxlength']">
                         El campo de apellido tiene un limite máximo de 20 letras.
                     </span>
                 </div>
                 <div class="mb-2">
                     <label for="birthday" class="form-label">Fecha de Nacimiento</label>
-                    <input type="date" class="form-control border-secondary" formControlName="birthday" id="birthday">
+                    <input type="date" class="form-control border-secondary" formControlName="nacimiento"
+                        id=" birthday">
                     <span class="text-danger"
-                        *ngIf="registrationForm.get('birthday')?.touched && registrationForm.get('birthday')?.errors?.['required']">
+                        *ngIf="formularioRegistro.get('nacimiento')?.touched && formularioRegistro.get('nacimiento')?.errors?.['required']">
                         La fecha de nacimiento es <strong>obligatoria</strong>.
                     </span>
                 </div>
@@ -47,34 +49,31 @@
                     <input type="email" class="form-control border-secondary" id="email" formControlName="email"
                         placeholder="ejemplo@mail.com">
                     <span class="text-danger"
-                        *ngIf="registrationForm.get('email')?.touched && registrationForm.get('email')?.errors?.['required']">
+                        *ngIf="formularioRegistro.get('email')?.touched && formularioRegistro.get('email')?.errors?.['required']">
                         Es necesario que ingrese su email.
                     </span>
                     <span class="text-danger"
-                        *ngIf="registrationForm.get('email')?.touched && registrationForm.get('email')?.errors?.['email']">
+                        *ngIf="formularioRegistro.get('email')?.touched && formularioRegistro.get('email')?.errors?.['email']">
                         No es un formato válido de correo electrónico.
                     </span>
                 </div>
                 <div class="mb-2">
                     <label for="password" class="form-label">Contraseña</label>
                     <div class="input-group">
-                        <input [type]="inputPassType ? 'text' : 'password'" class="form-control border-secondary"
-                            formControlName="password" id="password" aria-describedby="passhelp">
-                        <span class="input-group-text border-secondary">
-                            <i class="fa" (click)="toggleInputPassType()"></i>
-                        </span>
+                        <input type="password" class="form-control border-secondary" formControlName="contraseña"
+                            id="password" aria-describedby="passhelp">
                     </div>
                     <div id="passhelp" class="form-text text-white">La contraseña debe contener entre 8 y 20
                         caracteres alfanuméricos</div>
                     <span class=" text-danger"
-                        *ngIf="registrationForm.get('password')?.touched && registrationForm.get('password')?.errors?.['required']">
+                        *ngIf="formularioRegistro.get('contraseña')?.touched && formularioRegistro.get('contraseña')?.errors?.['required']">
                         Es necesario que escriba una contraseña
                     </span>
                     <span class="text-danger"
-                        *ngIf="registrationForm.get('password')?.touched && registrationForm.get('password')?.errors?.['minlength']">
+                        *ngIf="formularioRegistro.get('contraseña')?.touched && formularioRegistro.get('contraseña')?.errors?.['minlength']">
                         Debe tener por lo menos <strong>8 caractetres alfanuméricos</strong>.
                     </span>
-                    <span class="text-danger" *ngIf="registrationForm.get('password')?.errors?.['maxlength']">
+                    <span class="text-danger" *ngIf="formularioRegistro.get('contraseña')?.errors?.['maxlength']">
                         La contraseña tiene un limite <strong>máximo de 20 caracteres alfanuméricos</strong>.
                     </span>
                 </div>
@@ -82,31 +81,28 @@
                 <div class="mb-4">
                     <label for="checkpass" class="form-label">Reingrese la contraseña</label>
                     <div class="input-group">
-                        <input [type]="inputCheckType ? 'text': 'password'" class="form-control border-secondary"
-                            formControlName="checkpass" id="checkpass">
-                        <span class="input-group-text border-secondary">
-                            <i class="fa fa-eye" [ngClass]="{'fa-eye-slash': inputCheckType, 'fa-eye': !inputCheckType}"
-                                (click)="toggleInputCheckType()"></i>
-                        </span>
+                        <input type="password" class="form-control border-secondary" formControlName="checkpass"
+                            id="checkpass">
                     </div>
                     <span class="text-danger"
-                        *ngIf="registrationForm.get('checkpass')?.touched && registrationForm.get('checkpass')?.errors?.['required']">
+                        *ngIf="formularioRegistro.get('checkpass')?.touched && formularioRegistro.get('checkpass')?.errors?.['required']">
                         Es necesario que escriba una contraseña
                     </span>
                     <span class="text-danger"
-                        *ngIf="registrationForm.get('checkpass')?.touched && registrationForm.get('checkpass')?.errors?.['minlength']">
+                        *ngIf="formularioRegistro.get('checkpass')?.touched && formularioRegistro.get('checkpass')?.errors?.['minlength']">
                         Debe tener por lo menos <strong>8 caractetres alfanuméricos</strong>.
                     </span>
-                    <span class="text-danger" *ngIf="registrationForm.get('checkpass')?.errors?.['maxlength']">
+                    <span class="text-danger" *ngIf="formularioRegistro.get('checkpass')?.errors?.['maxlength']">
                         La contraseña tiene un limite <strong>máximo de 20 caracteres alfanuméricos</strong>.
                     </span>
-                    <span *ngIf="registrationForm.get('checkpass')?.touched && registrationForm.hasError('notSame') "
+                    <span
+                        *ngIf="formularioRegistro.get('checkpass')?.touched && formularioRegistro.hasError('notSame') "
                         class="text-danger">Las contraseñas <strong>no coinciden</strong>.</span>
                 </div>
 
                 <div class="d-grid gap-2">
                     <button type="submit" class="btn btn-primary"
-                        [disabled]="this.registrationForm.invalid">Registrarse</button>
+                        [disabled]="this.formularioRegistro.invalid">Registrarse</button>
                 </div>
             </form>
         </div>
