@@ -2,6 +2,7 @@
     <div class="card bg-black rounded-4 text-light shadow" style="width: 28rem;">
         <div class="card-body">
             <h3 class="card-title text-white text-center fst-italic fw-bolder">Formulario de Registro</h3>
+            <span>EL RESULTADO SE MUESTRA POR CONSOLA</span>
             <form [formGroup]="registrationForm" (ngSubmit)="register()">
                 <div class="mb-2">
                     <label for="name" class="form-label">Nombre</label>
@@ -63,9 +64,9 @@
                             <i class="fa" (click)="toggleInputPassType()"></i>
                         </span>
                     </div>
-                    <div id="passhelp" class="form-text">La contraseña debe contener entre 8 y 20
+                    <div id="passhelp" class="form-text text-white">La contraseña debe contener entre 8 y 20
                         caracteres alfanuméricos</div>
-                    <span class="text-danger"
+                    <span class=" text-danger"
                         *ngIf="registrationForm.get('password')?.touched && registrationForm.get('password')?.errors?.['required']">
                         Es necesario que escriba una contraseña
                     </span>

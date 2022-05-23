@@ -23,7 +23,7 @@ export class FormComponent implements OnInit {
       password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(20)]],
       checkpass: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(20)]]
     },
-      { validator: this.checkPassword }
+      // { validator: this.checkPassword }
     );
   }
 
@@ -34,11 +34,11 @@ export class FormComponent implements OnInit {
     this.registrationForm.reset()
   }
 
-  checkPassword(group: FormGroup): any {
-    const pass = group.controls.password?.value
-    const checkpass = group.controls.checkpass?.value
-    return pass === checkpass ? null : { notSame: true }
-  }
+  // checkPassword(group: FormGroup): any {
+  //   const pass = group.controls.password?.value
+  //   const checkpass = group.controls.checkpass?.value
+  //   return pass === checkpass ? null : { notSame: true }
+  // }
 
   toggleInputPassType() {
     this.inputPassType = !this.inputPassType;
